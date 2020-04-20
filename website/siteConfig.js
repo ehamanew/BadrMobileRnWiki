@@ -23,7 +23,7 @@ const users = [
 const siteConfig = {
   title: "BADR Mobile Wiki", // Title for your website.
   tagline: "React Native",
-  url: "https://AmineZAMANI:08247a0dc0da345a303e89a6900e3e2462acd455@AmineZAMANI.github.io",
+  url: "https://AmineZAMANI.github.io",
   projectName: "BadrMobileRnWiki",
   organizationName: "AmineZAMANI", // Your website URL
   baseUrl: "/BadrMobileRnWiki/",
