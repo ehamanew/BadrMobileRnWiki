@@ -26,7 +26,7 @@ const siteConfig = {
   url: "https://AmineZAMANI.github.io",
   projectName: "BadrMobileRnWiki",
   organizationName: "AmineZAMANI", // Your website URL
-  baseUrl: "/",
+  baseUrl: "/BadrMobileRnWiki/",
    // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
