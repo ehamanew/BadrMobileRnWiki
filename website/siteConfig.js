@@ -27,7 +27,7 @@ const siteConfig = {
   projectName: "BadrMobileRnWiki",
   organizationName: "AmineZAMANI", // Your website URL
   baseUrl: "/BadrMobileRnWiki/",
-   // Base URL for your project */
+  // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
@@ -102,7 +102,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: "https://github.com/AmineZAMANI/BadrMobileRnWiki",
 };
 
 module.exports = siteConfig;
