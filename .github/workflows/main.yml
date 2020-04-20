@@ -41,14 +41,14 @@ jobs:
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: website/build/BadrMobileRnWiki/ # The folder the action should deploy.
           
     # Runs a single command using the runners shell
-    - name: Publish
-      run: npm run publish-gh-pages
-      working-directory: ${{env.working-directory}}
+    #- name: Publish
+    #  run: npm run publish-gh-pages
+     # working-directory: ${{env.working-directory}}
     
     #- name: Deploy
      # uses: peaceiris/actions-gh-pages@v3
