@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Redux · BADR Mobile Wiki</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="### 1. Aperçu théorique :"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Redux · BADR Mobile Wiki"/><meta property="og:type" content="website"/><meta property="og:url" content="https://AmineZAMANI.github.io/"/><meta property="og:description" content="### 1. Aperçu théorique :"/><meta property="og:image" content="https://AmineZAMANI.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://AmineZAMANI.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/book.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/book.png" alt="BADR Mobile Wiki"/><h2 class="headerTitleWithLogo">BADR Mobile Wiki</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/architecture" target="_self">Documentation</a></li><li class="siteNavGroupActive"><a href="/docs/exemple1" target="_self">Exemples</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Architecture</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Architecture</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/architecture">Vue d&#x27;ensemble</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/redux">Redux</a></li><li class="navListItem"><a class="navItem" href="/docs/composants">Composants</a></li><li class="navListItem"><a class="navItem" href="/docs/httpclient">Client HTTP</a></li><li class="navListItem"><a class="navItem" href="/docs/internalisation">Internalisation</a></li><li class="navListItem"><a class="navItem" href="/docs/storage">Async sotrage</a></li><li class="navListItem"><a class="navItem" href="/docs/styles">Styles</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Exemples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/exemple1">Exemple 1</a></li><li class="navListItem"><a class="navItem" href="/docs/exemple2">Exemple 2</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Redux</h1></header><article><div><span><h3><a class="anchor" aria-hidden="true" id="1-aperçu-théorique-"></a><a href="#1-aperçu-théorique-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Aperçu théorique :</h3>
+<p style='text-align: justify;'>Redux est une architecture unidirectionnelle qui assure l'acheminement des données de bout en bout comme vous pouvez le remarquer dans le schéma ci-dessous : </p>
+<p><img src="/docs/assets/architecture_redux.png" alt="alt-text"></p>
+<p style='text-align: justify;'>Le process est déclanché suite à une demande de l'utilisateur (partie View) qui expédit un flux (une action d'un type donné (exmple ACTION_LOGIN) accompagné d'un payload) qui contient la valeur du nouveau state. L'action est systématiquement transmise au Reducer qui est une fonction qui permet de modifier le state de l'application selon l'action reçue. Une fois le store modifié, toutes les vues abonnées à ce store seront automatiquement informées du changement.</p>
+<h3><a class="anchor" aria-hidden="true" id="2-aperçu-pratique-"></a><a href="#2-aperçu-pratique-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Aperçu pratique :</h3>
+<h4><a class="anchor" aria-hidden="true" id="21-installation"></a><a href="#21-installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.1 Installation</h4>
+<p>Les dépendances Redux sont déclarées au niveau du fichier package.json comme suit :</p>
+<pre><code class="hljs css language-json">"redux": "^4.0.5",
+"react-redux": "^7.1.3",
+"redux-thunk": "^2.3.0",
+</code></pre>
+<ul>
+<li><strong>redux</strong> : La librairie principale (Core)</li>
+<li><strong>redux-thunk</strong> : un middleware redux qui vous aide avec des actions asynchrones prédéfinies (appel du dispatch dans la vue, routing, logging, crash reporting).</li>
+<li><strong>react-redux</strong> : Connecte le store Redux avec les composants React</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="22-import--utilisation"></a><a href="#22-import--utilisation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.2 Import &amp; Utilisation</h4>
+<p>Aprés avoir installer les librairies nécéssaires, il est temps maintenant de les importer dans le projet. Au niveau du fichier App.js on ajoute les imports suivants :</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-comment">/** REDUX */</span>
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-redux"</span>;
+<span class="hljs-keyword">import</span> { createStore, applyMiddleware } <span class="hljs-keyword">from</span> <span class="hljs-string">"redux"</span>;
+<span class="hljs-keyword">import</span> allReducers <span class="hljs-keyword">from</span> <span class="hljs-string">"./redux/reducers"</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">"redux-thunk"</span>;
+
+<span class="hljs-keyword">const</span> middleware = [thunk];
+<span class="hljs-keyword">const</span> store = createStore(allReducers, applyMiddleware(thunk));
+</code></pre>
+<p style='text-align: justify;'>La fonction createStore permet de créer un store en précisant le reducer (dans notre cas allReducers est l'ensemble des reducers implementés dans notre application) et un enhancer "applyMiddleware(thunk) qui va nous faciliter l'utilisation de la fontion dispatch".
+<p>Aprés avoir créer notre store, il maintenant essentiel de le rendre disponible pour l'ensemble des composants (Subscribers). On le fait avec la balise Provider :</p>
+<pre><code class="hljs css language-JSX">&lt;Provider store={store}&gt;
+    <span class="hljs-comment">/** Your components here **/</span>
+    ...
+&lt;Provider&gt;
+</code></pre>
+</p>
+<p>Au niveau du dossier Redux, on remarque la présence de deux sous dossier : Actions et Reducers</p>
+<p><img src="/docs/assets/redux3.png" alt="alt-text"></p>
+<p>Une Action est un objet avec deux paramètres :</p>
+<ul>
+<li>Un type : Le type qui correspond à l'action, Exemple : AUTH_LOGIN_IN_PROGRESS</li>
+<li>Une valeur : les données envoyées</li>
+</ul>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">request</span>(<span class="hljs-params">action, navigation</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">dispatch</span> =&gt;</span> {
+    ...
+    dispatch(inProgress(action));
+    ...
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inProgress</span>(<span class="hljs-params">action</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: Constants.AUTH_LOGIN_IN_PROGRESS,
+    <span class="hljs-attr">value</span>: action.value,
+  };
+}
+</code></pre>
+<p style='text-align: justify;'>Aprés avoir appeler un dispatch, le reducer va automatiquement mettre à jour le state global puis notifier la vue afin d'appliquer le changement sur le composant abonné.
+<p>Exemple : dans le cas du dispatch de l'action AUTH_LOGIN_IN_PROGRESS le reducer va mettre la valeur showProgress à true, ce qui va être répercuté sur le store :</p></p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (state = initialState, action) =&gt; {
+  <span class="hljs-keyword">let</span> nextState = {
+    ...state,
+    <span class="hljs-attr">value</span>: action.value,
+  };
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> Constants.AUTH_LOGIN_REQUEST:
+      ...
+      return nextState;
+    <span class="hljs-keyword">case</span> Constants.AUTH_LOGIN_IN_PROGRESS:
+      nextState.showProgress = <span class="hljs-literal">true</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'--&gt; login in progress...'</span>);
+      <span class="hljs-keyword">return</span> nextState;
+</code></pre>
+<p>Et enfin mettre à jour la vue pour afficher le composant de la progression :</p>
+<pre><code class="hljs css language-JSX"> {<span class="hljs-keyword">this</span>.props.showProgress &amp;&amp; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">BadrProgressBar</span> /&gt;</span></span>}
+</code></pre>
+<p style='text-align: justify;'>Les reducers sont combinés dans le fichier ./src/redux/reducers/index.js afin d'être utilisés par la méthode createStore dans le fichier App.js.</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-comment">/**
+ * combine all reducer
+ */</span>
+<span class="hljs-keyword">const</span> allReducers = combineReducers({
+  authReducer,
+  smsVerifyReducer,
+  confirmConnexionReducer,
+  menuReducer,
+});
+</code></pre>
+<p>Tous les types d'actions sont déclarés au niveau du dossier : ./src/common/constants/ :</p>
+<p>Exemple du cas de l'authentification :</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AUTH_LOGIN_REQUEST = <span class="hljs-string">"[AUTH] AUTH_LOGIN_REQUEST"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AUTH_LOGIN_SUCCESS = <span class="hljs-string">"[AUTH] AUTH_LOGIN_SUCCESS"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AUTH_LOGIN_FAILED = <span class="hljs-string">"[AUTH] AUTH_LOGIN_FAILED"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AUTH_LOGIN_IN_PROGRESS = <span class="hljs-string">"[AUTH] AUTH_LOGIN_IN_PROGRESS"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> AUTH_LOGOUT = <span class="hljs-string">"[AUTH] LOGOUT"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> LOGIN_INIT = <span class="hljs-string">"[AUTH] LOGIN_INIT"</span>;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="presque-fini-"></a><a href="#presque-fini-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Presque fini !</h3>
+<p style='text-align: justify;'>Tout ce qu'il nous reste est connecter store Redux à notre composant grace à la fonction connect. En suivant la documentation officielle de react-redux sur Github, il faut créer la fonction mapStateToProps : </p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> ({...state.authReducer});
+</code></pre>
+<p style='text-align: justify;'>
+- mapStateToProps :  Si cet argument est spécifié, le composant s'abonnera aux mises à jour du store Redux. Cela signifie qu'à chaque fois que le store est mis à jour, mapStateToProps sera appelé. </p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(
+  mapStateToProps,
+  <span class="hljs-literal">null</span>,
+)(Login);
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/architecture"><span class="arrow-prev">← </span><span>Vue d&#x27;ensemble</span></a><a class="docs-next button" href="/docs/composants"><span>Composants</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/book.png" alt="BADR Mobile Wiki" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/doc1.html">Getting Started (or other categories)</a><a href="/docs/en/doc2.html">Guides (or other categories)</a><a href="/docs/en/doc3.html">API Reference (or other categories)</a></div><div><h5>Community</h5><a href="/en/users.html">User Showcase</a><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/">GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2020 BADR MOBILE</section></footer></div></body></html>
