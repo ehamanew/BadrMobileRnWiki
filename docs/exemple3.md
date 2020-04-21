@@ -146,6 +146,8 @@ import CounterWatcherTwo from './src/screens/CounterWatcherTwo';
 ...
 ```
 
-## Et voilà : 
+🔥🔥🔥 [Github repository](https://github.com/AmineZAMANI/SimpleCounterRN) 🔥🔥🔥 
+
+## Et voilà 😊
 
 ![demo](assets/counter2.gif)

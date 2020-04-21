@@ -34,15 +34,13 @@ Aprés avoir installer les librairies nécéssaires, il est temps maintenant de 
 ```javascript
 /** REDUX */
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore } from "redux";
 import allReducers from "./redux/reducers";
-import thunk from "redux-thunk";
 
-const middleware = [thunk];
-const store = createStore(allReducers, applyMiddleware(thunk));
+const store = createStore(allReducers);
 ```
 
-<p style='text-align: justify;'>La fonction createStore permet de créer un store en précisant le reducer (dans notre cas allReducers est l'ensemble des reducers implementés dans notre application) et un enhancer "applyMiddleware(thunk) qui va nous faciliter l'utilisation de la fontion dispatch".
+<p style='text-align: justify;'>La fonction createStore permet de créer un store en précisant le reducer (dans notre cas allReducers est l'ensemble des reducers implementés dans notre application).
 
 Aprés avoir créer notre store, il maintenant essentiel de le rendre disponible pour l'ensemble des composants (Subscribers). On le fait avec la balise Provider :
 
@@ -134,7 +132,7 @@ export const AUTH_LOGOUT = "[AUTH] LOGOUT";
 export const LOGIN_INIT = "[AUTH] LOGIN_INIT";
 ```
 
-### Presque fini !
+### Presque fini ! 😬
 
 <p style='text-align: justify;'>Tout ce qu'il nous reste est connecter store Redux à notre composant grace à la fonction connect. En suivant la documentation officielle de react-redux sur Github, il faut créer la fonction mapStateToProps : </p>
 

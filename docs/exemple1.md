@@ -1,6 +1,6 @@
 ---
 id: exemple1
-title: Exemple 1
+title: Counter
 ---
 
 Cet exemple consiste à créer un compteur en utilisant une architecture Redux.
@@ -118,6 +118,8 @@ class App extends React.Component {
 }
 ```
 
-## Et voilà : 
+🔥🔥🔥 [Github repository](https://github.com/AmineZAMANI/ReduxCounterRN) 🔥🔥🔥 
+
+## Et voilà 😊
 
 ![demo](assets/counter.gif)
