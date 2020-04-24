@@ -45,6 +45,7 @@ import BadrPicker from "../../components/pickers/BadrPicker";
     cle="code"
     libelle="libelle"
     module="REF_LIB"
+    selectedValue="06"
     command="getCmbTypeIdentifiant"
     typeService="SP"
 />
@@ -53,12 +54,13 @@ import BadrPicker from "../../components/pickers/BadrPicker";
 
 ### Liste des attributs :
 
-| Attribut    |                          Description                          |
-| ----------- | :-----------------------------------------------------------: |
-| style       |                      Style du composant                       |
-| title       |                     Libelle du composant                      |
-| cle         | Identificateur unique de l'objet json affiché, exemple : code |
-| libelle     |    Libellé qui sera affiché dans la vue, exemple : libelle    |
-| module      |                      Nom du module BADR                       |
-| command     |                    Nom de la commande BADR                    |
-| typeService |                        Type de service BADR                        |
+| Attribut      |                                                                  Description                                                                  |
+| ------------- | :-------------------------------------------------------------------------------------------------------------------------------------------: |
+| style         |                                                              Style du composant                                                               |
+| title         |                                                             Libelle du composant                                                              |
+| cle           |                                         Identificateur unique de l'objet json affiché, exemple : code                                         |
+| libelle       |                                            Libellé qui sera affiché dans la vue, exemple : libelle                                            |
+| selectedValue | Valeur séléctionnée par défaut (correspond à l'attribut cle), exemple : selectedValue="06" pour afficher la valeur Passeport Diplomatique(06) |
+| module        |                                                              Nom du module BADR                                                               |
+| command       |                                                            Nom de la commande BADR                                                            |
+| typeService   |                                                             Type de service BADR                                                              |
