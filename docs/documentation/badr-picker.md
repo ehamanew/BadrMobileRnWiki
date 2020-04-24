@@ -17,13 +17,16 @@ title: BadrPicker
 import BadrPicker from "../../components/pickers/BadrPicker";
 ```
 
-```JSX
+```javascript
 
 <BadrPicker
     style={{width: 400}}
     title="Profil"
     cle="codeProfil"
     libelle="libelleProfil"
+    onValueChange={(selectedValue, selectedIndex) =>
+      this.handleValueChanged(selectedValue, selectedIndex)
+    }
     module="HAB_LIB"
     command="getListeProfil"
     typeService="SP"
@@ -34,6 +37,9 @@ import BadrPicker from "../../components/pickers/BadrPicker";
     title="Type t6bis"
     cle="code"
     libelle="libelle"
+    onValueChange={(selectedValue, selectedIndex) =>
+      this.handleValueChanged(selectedValue, selectedIndex)
+    }
     module="T6BIS_LIB"
     command="getAllTypeT6bis"
     typeService="SP"
@@ -45,6 +51,9 @@ import BadrPicker from "../../components/pickers/BadrPicker";
     cle="code"
     libelle="libelle"
     module="REF_LIB"
+    onValueChange={(selectedValue, selectedIndex) =>
+      this.handleValueChanged(selectedValue, selectedIndex)
+    }
     selectedValue="06"
     command="getCmbTypeIdentifiant"
     typeService="SP"
@@ -64,3 +73,5 @@ import BadrPicker from "../../components/pickers/BadrPicker";
 | module        |                                                              Nom du module BADR                                                               |
 | command       |                                                            Nom de la commande BADR                                                            |
 | typeService   |                                                             Type de service BADR                                                              |
+| onValueChange   |                                                          Callback sur le changement de la valeur du composant          
+
