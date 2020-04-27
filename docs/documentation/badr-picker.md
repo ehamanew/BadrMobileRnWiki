@@ -33,6 +33,7 @@ import BadrPicker from "../../components/pickers/BadrPicker";
             }
             param=""
             typeService="SP"
+            storeWithKey="bureau"
           />
 
           <BadrPicker
@@ -69,6 +70,7 @@ import BadrPicker from "../../components/pickers/BadrPicker";
 | typeService   |                                                             Type de service BADR                                                              |
 | onValueChange |                                             Callback sur le changement de la valeur du composant                                              |
 | param         |                                                          Paramétre fourni au service                                                          |
+| storeWithKey  |         Si cette cet attribut est mentionné, le composant sauvgardera à chaque fois la valeur sélectionnée dans le storage local du device avec la clé fournie.          |
 
 ### Recharger les donées du composants :
 
@@ -78,7 +80,7 @@ On peut recharger des données du composant en lui fournissant une référence c
 <BadrPicker onRef={ref => (this.comboArrondissements = ref)} ... />
 ```
 
-Afin de pouvoir affeler la fonction refresh : 
+Afin de pouvoir appeler la fonction refresh avec le nouveau paramétre :
 
 ```javascript
 ...
