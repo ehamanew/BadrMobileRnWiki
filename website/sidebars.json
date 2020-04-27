@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Documentation": ["documentation","documentation/doc-badr-picker"],
+    "Documentation": ["documentation","documentation/doc-badr-picker","documentation/doc-badr-picker-checker"],
     "Architecture": ["architecture", "redux", "internalisation", "composants","httpclient","loadash" , "storage", "styles"],
     "Exemples": ["setupenv","exemple0","exemple1","exemple2","exemple3"]
   }

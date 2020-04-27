@@ -20,44 +20,38 @@ import BadrPicker from "../../components/pickers/BadrPicker";
 ```javascript
 
 <BadrPicker
-    style={{width: 400}}
-    title="Profil"
-    cle="codeProfil"
-    libelle="libelleProfil"
-    onValueChange={(selectedValue, selectedIndex) =>
-      this.handleValueChanged(selectedValue, selectedIndex)
-    }
-    module="HAB_LIB"
-    command="getListeProfil"
-    typeService="SP"
-/>
+            key="bureau"
+            style={CustomStyleSheet.badrPicker}
+            titleStyle={CustomStyleSheet.badrPickerTitle}
+            title={translate('profile.listeBureaux')}
+            cle="codeBureau"
+            libelle="nomBureauDouane"
+            module="REF_LIB"
+            command="getListeBureaux"
+            onValueChange={(selectedValue, selectedIndex) =>
+              this.handleBureauChanged(selectedValue, selectedIndex)
+            }
+            param=""
+            typeService="SP"
+          />
 
-<BadrPicker
-    style={{width: 400}}
-    title="Type t6bis"
-    cle="code"
-    libelle="libelle"
-    onValueChange={(selectedValue, selectedIndex) =>
-      this.handleValueChanged(selectedValue, selectedIndex)
-    }
-    module="T6BIS_LIB"
-    command="getAllTypeT6bis"
-    typeService="SP"
-/>
-
-<BadrPicker
-    style={{width: 400}}
-    title="Type document"
-    cle="code"
-    libelle="libelle"
-    module="REF_LIB"
-    onValueChange={(selectedValue, selectedIndex) =>
-      this.handleValueChanged(selectedValue, selectedIndex)
-    }
-    selectedValue="06"
-    command="getCmbTypeIdentifiant"
-    typeService="SP"
-/>
+          <BadrPicker
+            onRef={ref => (this.comboArrondissements = ref)}
+            style={CustomStyleSheet.badrPicker}
+            titleStyle={CustomStyleSheet.badrPickerTitle}
+            key="arrondissements"
+            style={CustomStyleSheet.badrPicker}
+            title={translate('profile.listeArrondissements')}
+            cle="code"
+            libelle="libelle"
+            module="REF_LIB"
+            command="getArrondissementsByAgentAndBureau"
+            onValueChange={(selectedValue, selectedIndex) =>
+              this.handleArrondissementChanged(selectedValue, selectedIndex)
+            }
+            param={this.state.selectedBureau}
+            typeService="SP"
+          />
 
 ```
 
@@ -73,5 +67,21 @@ import BadrPicker from "../../components/pickers/BadrPicker";
 | module        |                                                              Nom du module BADR                                                               |
 | command       |                                                            Nom de la commande BADR                                                            |
 | typeService   |                                                             Type de service BADR                                                              |
-| onValueChange   |                                                          Callback sur le changement de la valeur du composant          
+| onValueChange |                                             Callback sur le changement de la valeur du composant                                              |
+| param         |                                                          Paramétre fourni au service                                                          |
 
+### Recharger les donées du composants :
+
+On peut recharger des données du composant en lui fournissant une référence comme suit :
+
+```JSX
+<BadrPicker onRef={ref => (this.comboArrondissements = ref)} ... />
+```
+
+Afin de pouvoir affeler la fonction refresh : 
+
+```javascript
+...
+this.comboArrondissements.refresh(selectedValue);
+...
+```
