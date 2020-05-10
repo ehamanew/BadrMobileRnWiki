@@ -1,7 +1,25 @@
 {
   "docs": {
-    "Documentation": ["documentation","documentation/doc-badr-picker","documentation/doc-badr-picker-checker"],
-    "Architecture": ["architecture", "redux", "internalisation", "composants","httpclient","loadash" , "storage", "styles"],
-    "Exemples": ["setupenv","exemple0","exemple1","exemple2","exemple3"]
+    "Documentation": [
+      "documentation",
+      "documentation/doc-badr-picker",
+      "documentation/doc-badr-picker-checker",
+      "documentation/doc-badr-tree",
+      "documentation/doc-badr-accordion",
+      "documentation/doc-badr-toolbar",
+      "documentation/doc-badr-popup",
+      "documentation/doc-badr-modal"
+    ],
+    "Architecture": [
+      "architecture",
+      "redux",
+      "internalisation",
+      "composants",
+      "httpclient",
+      "loadash",
+      "storage",
+      "styles"
+    ],
+    "Exemples": ["setupenv", "exemple0", "exemple1", "exemple2", "exemple3"]
   }
 }

@@ -1,6 +1,6 @@
 ---
 id: doc-badr-picker
-title: BadrPicker
+title: Picker
 ---
 
 ### Visualisation du composant:
@@ -72,7 +72,7 @@ import BadrPicker from "../../components/pickers/BadrPicker";
 | param         |                                                          Paramétre fourni au service                                                          |
 | storeWithKey  |         Si cette cet attribut est mentionné, le composant sauvgardera à chaque fois la valeur sélectionnée dans le storage local du device avec la clé fournie.          |
 
-### Recharger les donées du composants :
+### Recharger les données du composants :
 
 On peut recharger des données du composant en lui fournissant une référence comme suit :
 

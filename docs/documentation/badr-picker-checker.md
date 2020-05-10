@@ -1,6 +1,6 @@
 ---
 id: doc-badr-picker-checker
-title: BadrPickerChecker
+title: PickerChecker
 ---
 
 ### Visualisation du composant:
@@ -60,7 +60,7 @@ import BadrPickerChecker from "../../components/pickers/BadrPickerChecker";
 > };
 > ```
 
-### Recharger les donées du composants :
+### Recharger les données du composants :
 
 On peut recharger des données du composant en lui fournissant une référence comme suit :
 
