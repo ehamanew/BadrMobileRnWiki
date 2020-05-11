@@ -8,7 +8,8 @@
       "documentation/doc-badr-accordion",
       "documentation/doc-badr-toolbar",
       "documentation/doc-badr-popup",
-      "documentation/doc-badr-modal"
+      "documentation/doc-badr-modal",
+      "documentation/doc-badr-rechercheRefDum"
     ],
     "Architecture": [
       "architecture",
