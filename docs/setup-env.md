@@ -2,34 +2,54 @@
 id: setupenv
 title: Préparer l'environnement
 ---
+0. Récuperer les sources depuis github via la commande : 
 
-1) Allez sur https://nodejs.org/en/download/ et installez NodeJs.
+```git
+> git clone https://github.com/AmineZAMANI/BadrMobileRn.git
+```
+
+1. Installez l'outil [VisualCode](https://code.visualstudio.com/) puis ouvrez le dossier du projet.
+
+2. Installez le plugin React native Tools
+
+![](assets/visualcode.png)
+
+3. Allez sur https://nodejs.org/en/download/ puis installez la dernière version de NodeJs.
+
+![alt-text](assets/envDev/5.png)
+
 ```console
 > node -v
 ```
 
-2) Installer React Native CLI
+4. Allez sur https://developer.android.com/studio puis installez la dernière version d'Android studio avant de vérifier qu'au moins un sdk platform est bien installé (Exemple : API 29) :
+   ![alt-text](assets/envDev/0.png)
+
+5. Installez React Native CLI
+
 ```console
 > npm install –g react-native-cli
 ```
 
-3) Créez un nouveau projet
+6. Ouvrez le projet que vous avez récupéré depuis git dans Visual Code puis dans un nouveau terminal lancez la commande :
+
 ```console
-> react-native init Counter001
+> npm install
 ```
 
-4) Allez sur le répertoire du projet
-```console
-> cd Counter001
-```
+7. Ouvrez Android studio, créez un nouveau virtual device puis lancez le en cliquant sur "Start" :
 
-5) Démarrer l'application
+   ![alt-text](assets/envDev/1.png)
+
+8. Démarrez l'application via la commande :
+
 ```console
 > react-native run-android
 ```
 
-6) Installez l'outil [VisualCode](https://code.visualstudio.com/) puis ouvrez le dossier du projet.
+![alt-text](assets/envDev/2.png)
 
-7) Installez le plugin React native Tools 
+9. Dés que l'application est lancée vérifiez que le hot reloading marche bien en s'assurant que l'écran s'actualise lors d'un CTRL+S éxécuté sur une vue : 
 
-![](assets/visualcode.png)
+![alt-text](assets/envDev/4.png)
+

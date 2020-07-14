@@ -9,7 +9,7 @@ title: Modal
 
 ### Emplacement du composant:
 
-> ./src/components/modal/BadrModal
+> ./src/components/shared/modal/BadrModal
 
 ### Utilisation du composant:
 

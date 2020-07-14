@@ -9,7 +9,7 @@ title: Picker
 
 ### Emplacement du composant:
 
-> ./src/components/pickers/BadrPicker
+> ./src/components/shared/pickers/BadrPicker
 
 ### Utilisation du composant:
 

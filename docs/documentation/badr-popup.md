@@ -9,7 +9,7 @@ title: Popup
 
 ### Emplacement du composant:
 
-> ./src/components/messages/index
+> ./src/components/shared/messages/index
 
 ### Utilisation du composant:
 

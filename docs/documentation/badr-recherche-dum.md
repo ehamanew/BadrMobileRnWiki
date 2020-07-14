@@ -9,7 +9,7 @@ title: rechercheRefDum
 
 ### Emplacement du composant:
 
-> ./src/components/rechercheRefDum/index
+> ./src/components/modules/rechercheRefDum/index
 
 ### Utilisation du composant:
 
@@ -19,11 +19,14 @@ import { RechercheRefDum } from "../../../components";
 
 ```JSX
 ...
-        <RechercheRefDum
-        navigation={this.props.navigation}
-        commande={'initControlerDedRI'}
-        successRedirection={this.getSuccessRedirectionScreen()}
-      />
+       <RechercheRefDum
+            module="CONTROL_LIB"
+            commande={infoControle.commande}
+            typeService="UC"
+            navigation={this.props.navigation}
+            successRedirection={infoControle.successRedirectionScreen}
+            routeParams={this.props.route.params}
+          />
 ...
 ```
 
@@ -33,4 +36,8 @@ import { RechercheRefDum } from "../../../components";
 | ------------------ | :------------------------------------------------: |
 | navigation         | Objet responsable sur la navigation du menu drawer |
 | commande           |             Commande d'initialisation              |
+| module             |             Commande d'initialisation              |
+| typeService        |                Type de service Badr                |
 | successRedirection |       Route de redirection en cas de succés        |
+| routeParams        |            Paramétres de la redirection            |
+| navigation         |              Object de la navigation               |

@@ -9,7 +9,7 @@ title: Accordion
 
 ### Emplacement du composant:
 
-> ./src/components/accordion/index
+> ./src/components/shared/accordion/index
 
 ### Utilisation du composant:
 

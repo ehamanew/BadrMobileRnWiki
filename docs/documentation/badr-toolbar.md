@@ -9,7 +9,7 @@ title: Toolbar
 
 ### Emplacement du composant:
 
-> ./src/components/toolbar/index
+> ./src/components/shared/toolbar/index
 
 ### Utilisation du composant:
 
@@ -30,9 +30,9 @@ import { Toolbar } from "../../../components";
 
 ### Liste des attributs :
 
-| Attribut   |                  Description                  |
-| ---------- | :-------------------------------------------: |
+| Attribut   |                    Description                     |
+| ---------- | :------------------------------------------------: |
 | navigation | Objet responsable sur la navigation du menu drawer |
-| title      |               Titre du toolbar                |
-| subtitle   |             Sous titre du toolbar             |
-| icon       |               Icone du toolbar                |
+| title      |                  Titre du toolbar                  |
+| subtitle   |               Sous titre du toolbar                |
+| icon       |                  Icone du toolbar                  |

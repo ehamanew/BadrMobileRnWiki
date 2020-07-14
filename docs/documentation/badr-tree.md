@@ -9,7 +9,7 @@ title: Tree
 
 ### Emplacement du composant:
 
-> ./src/components/tree/BadrTree
+> ./src/components/shared/tree/BadrTree
 
 ### Utilisation du composant:
 
@@ -57,4 +57,3 @@ import { BadrTree, BadrTreeItem } from "../../../components";
   { "id": 1, "parent": 0 }
 ]
 ```
-
