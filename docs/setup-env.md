@@ -2,13 +2,13 @@
 id: setupenv
 title: Préparer l'environnement
 ---
-0. Récuperer les sources depuis github via la commande : 
+0. Téléchargez git depuis : https://git-scm.com/downloads puis récuperer les sources depuis github via la commande : 
 
 ```git
 > git clone https://github.com/AmineZAMANI/BadrMobileRn.git
 ```
 
-1. Installez l'outil [VisualCode](https://code.visualstudio.com/) puis ouvrez le dossier du projet.
+Installez l'outil [VisualCode](https://code.visualstudio.com/) puis ouvrez le dossier du projet.
 
 2. Installez le plugin React native Tools
 
